@@ -14,6 +14,11 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
         },
     });
-
+    // quan he 1 nhieu: 1 nguoi co nhieu comment : khi dung dong lenh duoi day bang Comment se co them cot PostId cua bang Post
+    Posts.associate = (models) => {
+        Posts.hasMany(models.Comments, {
+            onDelete: "cascade"
+        })
+    }
     return Posts;
 };
