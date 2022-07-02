@@ -37,8 +37,10 @@ const validateTokenAuth = (req, res, next) => {
     }
     const validToken = verify(accessToken, "importantsecret");
     console.log('validToken', validToken)
+    // dat mot thuoc tinh bat ky cua req, khi do bat ky cho nao co authmiddleware ta deu co the su dung duoc validToken
+    req.user = validToken
     if (validToken) {
-        console.log(2222)
+        console.log("info in token: ", validToken)
         next();
     }
     else {

@@ -14,7 +14,10 @@ router.get("/:postId", async (req, res) => {
 //post comment
 //them middleware validateTokenAuth de dang nhap thi moi co the comment duoc
 router.post("/", validateTokenAuth, async (req, res) => {
+    console.log('validtoken ben comments', req.header("accesstoken"))
     const comment = req.body
+    const username = req.user.username
+    comment.username = username
     await Comments.create(comment)
     res.json(comment)
 })

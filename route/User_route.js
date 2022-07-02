@@ -22,7 +22,7 @@ router.post('/login', async (req, res) => {
             if (!match) res.json({ error: "Wrong password" })
             else {
                 //json web token duoc gui khi dang nhap thanh cong
-                const accesstoken = sign({ username: user.username, ud: user.id }, "importantsecret")
+                const accesstoken = sign({ username: user.username, id: user.id }, "importantsecret")
 
                 //gui mot chuoi token den frontend. Front end se luu no co the o localstore, seasionstore, cookie
                 res.json(accesstoken)
