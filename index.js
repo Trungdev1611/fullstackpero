@@ -18,6 +18,9 @@ app.use('/comments', commentsRouter)
 const userRouter = require("./route/User_route")
 app.use('/auth', userRouter)
 
+const likeRouter = require("./route/Likes_route")
+app.use('/likes', likeRouter)
+
 db.sequelize.sync().then(() => {
     app.listen(3001, () => {
         console.log("Server running on http://localhost:3001");
